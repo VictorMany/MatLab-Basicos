@@ -3,21 +3,25 @@
 %LEER LAS IMAGENES 
 %VISUALIZAR IMAGENES 
 %Buffer o arreglo de matrices (Para animacion)
- ini = 1; maxim = 20;
+ ini = 1; maxim = 101;
  for i = ini : maxim
-     archivo1 = sprintf('%d',i);
-     imag1 = imread(archivo1, 'jpeg');
-     imagesc(imag1);
+     formatSpec = '%s%d%s';
+
+     archivo1 = sprintf(formatSpec,'(',i,')');
+    
+     imag1 = imread(archivo1, 'jpg');
+     J = imrotate(imag1,-90,'bilinear');
+     imagesc(J);
      axis off;
      Fase(i) = getframe;
-     
      drawnow;
+     pause(0.001)
  end
  movie(Fase);
  
  %% Grabar video
-Video= VideoWriter('Prueba1');
-Video.FrameRate=3;
-open(Video)
-writeVideo(Video.Fase);
+Video = VideoWriter('Test2');
+Video.FrameRate = 3;
+open(Video);
+writeVideo(Video, Fase);
 close(Video);
