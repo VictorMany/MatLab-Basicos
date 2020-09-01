@@ -55,7 +55,25 @@ end
 imshow(AAA)
 colormap winter
 
-%% Tarea ESCALA DE GRISES 32x32
+%% Opcion alternativa de Ajuste 
+imag=imread('craneo.jpg', 'jpg');
 
+x=rgb2gray(imag);
+imshow(imag)
+%% CAMBIAR LA SATURaCION DE LOS COLORES
+xad2=imadjust(x,[0.5 0.75],[0.5 1],7);
+imshow(xad2);
+%% Recorte de imagen 
+i = imread('craneo.jpg', 'jpg');
+i2 = imcrop(i, [200 200 200 200]);
+subplot(1,2,1); imshow(i);
+subplot(1,2,2); imshow(i2);
 
+%% Desopacar 
+l = imread('craneo.jpg', 'jpg');
+background = imopen(i, strel('disk',15));
+lp = imsubstract(l, background);
+subplot(1,2,1); imshow(i);
+subplot(1,2,2); imshow(i2);
 
+ 

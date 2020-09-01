@@ -3,7 +3,7 @@
 %LEER LAS IMAGENES 
 %VISUALIZAR IMAGENES 
 %Buffer o arreglo de matrices (Para animacion)
- ini = 1; maxim = 101;
+ ini = 1; maxim = 281;
  for i = ini : maxim
      formatSpec = '%s%d%s';
 
